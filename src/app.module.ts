@@ -8,7 +8,7 @@ import { TagModule } from './tag/tag.module';
 import { MongooseModule } from '@nestjs/mongoose/dist/mongoose.module';
 
 @Module({
-  imports: [UserModule, ProfileModule, ArticleModule, TagModule, MongooseModule.forRoot('mongodb://127.0.0.1:27017')],
+  imports: [UserModule, ProfileModule, ArticleModule, TagModule, MongooseModule.forRoot('mongodb://127.0.0.1:27017/realworld')],
   controllers: [AppController],
   providers: [AppService],
 })
