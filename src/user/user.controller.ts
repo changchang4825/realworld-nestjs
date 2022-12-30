@@ -3,7 +3,7 @@ import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './schemas/user.schema';
-import { LoginUserClass } from './dto/login-user.dto';
+import { LoginUserDto } from './dto/login-user.dto';
 
 @Controller()
 export class UserController {
@@ -11,7 +11,7 @@ export class UserController {
 
 	@Post('users')
 	async createUser(@Body() createUserDto: CreateUserDto): Promise<User> {
-		return this.userService.createUser(createUserDto);
+		return await this.userService.createUser(createUserDto);
 	}
 
 	@Get('user')
@@ -25,7 +25,7 @@ export class UserController {
 	}
 
     @Post('users/login')
-    async loginUser(@Body() loginUserDto: LoginUserClass) {
+    async loginUser(@Body() loginUserDto: LoginUserDto) {
         return this.userService.loginUser(loginUserDto);
     }
 

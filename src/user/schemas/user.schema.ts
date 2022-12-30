@@ -1,10 +1,10 @@
 import { Schema, Prop, SchemaFactory } from "@nestjs/mongoose";
-import { IsEmail, IsNotEmpty, IsString, MinLength } from "class-validator";
-import { HydratedDocument } from "mongoose";
+import { IsEmail, IsNotEmpty, IsString, MinLength, ValidateIf } from "class-validator";
+import { HydratedDocument, Types } from "mongoose";
 
 export type UserDocument = HydratedDocument<User>;
 
-@Schema()
+@Schema({ timestamps: true })
 export class User {
     @Prop({ required: true, unique: true })
     @IsString()
@@ -20,13 +20,21 @@ export class User {
     @MinLength(8)
     password: string;
 
-    @Prop()
+    @Prop({ default: null })
     @IsString()
+    @ValidateIf((object, value) => value !== null)
     bio: string;
 
-    @Prop()
+    @Prop({ default: null })
     @IsString()
+    @ValidateIf((object, value) => value !== null)
     image: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
+
+// UserSchema.virtual('id').get(function () {
+//     return this._id;
+// });
+
+// UserSchema.set('toJSON', { virtuals: true });
