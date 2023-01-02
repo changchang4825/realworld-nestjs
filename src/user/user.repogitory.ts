@@ -10,15 +10,13 @@ export class UserRepogitory {
 
     async createUser(createUserDto: CreateUserDto) {
         return await this.userModel.create(createUserDto);
-        // const createdUser = await new this.userModel(createUserDto);
-        // return await createdUser.save();
-    }
-
-    async getUser() {
-        
     }
 
     async findUserByEmail(email: string) {
-        return await this.userModel.findOne({ email: email }); // .lean()
+        return await this.userModel.findOne({ email: email }).lean();
+    }
+
+    async findUserById(id: string): Promise<User> {
+        return await this.userModel.findById(id).select('-password');
     }
 }

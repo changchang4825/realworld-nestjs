@@ -2,8 +2,12 @@ import { OmitType } from "@nestjs/mapped-types";
 import { IsNotEmpty, IsString } from "class-validator";
 import { User } from "../schemas/user.schema";
 
-export class ResponseUserDto extends OmitType(User, ["password"]) {
+class ResponseUser extends OmitType(User, ["password"]) {
     @IsString()
     @IsNotEmpty()
     token: string
+}
+
+export interface ResponseUserDto {
+    "user": ResponseUser
 }
