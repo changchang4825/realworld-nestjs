@@ -6,7 +6,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { ResponseUserDto } from './dto/response-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './schemas/user.schema';
-import { UserRepogitory } from './user.repogitory';
+import { UserRepogitory } from './user.repository';
 
 @Injectable()
 export class UserService {

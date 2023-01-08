@@ -3,7 +3,7 @@ import { UserService } from './user.service';
 import { UserController } from './user.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { User, UserSchema } from './schemas/user.schema';
-import { UserRepogitory } from './user.repogitory';
+import { UserRepogitory } from './user.repository';
 import { AuthModule } from 'src/auth/auth.module';
 import { forwardRef } from '@nestjs/common/utils';
 
